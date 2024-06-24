@@ -2,10 +2,10 @@
 
 var peliculas = [];
 
-function filtrarPorGenero(genero, filtro) {
+function filtroDatos(genero, filtro) {
     let html = ``;
 
-    // Filtrar por género seleccionado y coincidencia en título
+
     let peliculasFiltro = peliculas.filter(pelicula => 
         (genero == "Todos" || genero == "" || pelicula.genre == genero) &&
         (filtro === undefined || filtro == "" || pelicula.title.toLowerCase().includes(filtro.toLowerCase()))
@@ -28,16 +28,16 @@ function filtrarPorGenero(genero, filtro) {
                 </div>`;
     });
 
-    $("#movieList").html(html);
+    $("#panelPeliculas").html(html);
 }
 
 function limpiarTodo() {
     document.getElementById('selectGenre').selectedIndex = 0;
     document.getElementById('filtroInput').value = '';
 
-    var generoSeleccionado = $('#selectGenre').val().trim();
+    var genero = $('#selectGenre').val().trim();
     var filtro = $('#filtroInput').val().trim();
-    filtrarPorGenero(generoSeleccionado, filtro);
+    filtroDatos(genero, filtro);
 }
 
 
@@ -52,29 +52,29 @@ $(document).ready(function () {
             peliculas = data.peliculas;
             const generos = [...new Set(peliculas.map(pelicula => pelicula.genre))];
 
-            let htmlGeneros = `<option value="Todos">Todos</option>`;
+            let optionItems = `<option value="Todos">Todos</option>`;
             $.each(generos, function (i, genero) {
-                htmlGeneros += `<option value="${genero}">${genero}</option>`;
+                optionItems += `<option value="${genero}">${genero}</option>`;
             })
-            $("#selectGenre").html(htmlGeneros);
+            $("#selectGenre").html(optionItems);
 
            
         }
     })
 
     $('#selectGenre').on('change', function() {
-        var generoSeleccionado = $(this).val().trim();
+        var genero = $(this).val().trim();
         var filtro = $('#filtroInput').val().trim();
-        filtrarPorGenero(generoSeleccionado, filtro);
+        filtroDatos(genero, filtro);
     });
     
    
     $('#filtroInput').on('input', function() {
-        var generoSeleccionado = $('#selectGenre').val().trim();
+        var genero = $('#selectGenre').val().trim();
         var filtro = $(this).val().trim();
-        filtrarPorGenero(generoSeleccionado, filtro);
+        filtroDatos(genero, filtro);
     });
 
 
-    filtrarPorGenero('Todos','');
+    filtroDatos('Todos','');
 })
