@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Socius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        .imagen_logo {
+            padding: 20px;
+            border-radius: 5px;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: calc(100% - 22px); /* 100% ancho menos padding y border */
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #2AA4F6;;
+            color: #000000;
+            border: none;
+            border-radius: 3px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault();
+            var nombre = document.getElementById('nombre').value;
+            alert('Gracias ' + nombre);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a Socius</h1>
+        <div class="imagen_logo">
+            <img alt="Formulario Imagen"  src="data:image/jpeg;base64,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"/>
+        </div>
+        <form onsubmit="enviarFormulario(event)">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="texto">Comentario</label>
+            <textarea id="texto" name="texto" rows="4" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
